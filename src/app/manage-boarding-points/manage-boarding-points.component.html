@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Boarding Points</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts for elegant typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .admin-dashboard-container {
+        display: flex;
+        width: 100%;
+      }
+
+      /* Sidebar inside the Main Content */
+      .inner-sidebar {
+        width: 300px;
+        background-color: #404241;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        height: 100vh; /* Full height inside main content */
+      }
+
+      .inner-sidebar .nav-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .inner-sidebar .nav-list li {
+        margin-bottom: 20px;
+      }
+
+      .inner-sidebar button {
+        background-color: transparent;
+        color: #17c3b2;
+        border: none;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .inner-sidebar button i {
+        color: #ffcc00;
+        margin-right: 10px;
+        font-size: 1.4em;
+      }
+
+      .inner-sidebar button:hover {
+        color: #14a099;
+      }
+
+      /* Main Content Area */
+      .main-content {
+        flex-grow: 1;
+        background-color: #fff;
+        color: #404241;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Section Container */
+      .section-container {
+        background-color: #404241;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+        color: white;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #17c3b2;
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        font-size: 1.8em;
+        font-weight: 600;
+        color: #ffcc00;
+        margin-bottom: 20px;
+      }
+
+      /* Form Styles */
+      .form-group label {
+        color: #ffcc00;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        color: #000;
+      }
+
+      /* Button Styles */
+      .btn-primary {
+        background-color: #17c3b2;
+        border: none;
+      }
+
+      .btn-primary:hover {
+        background-color: #14a099;
+      }
+
+      .btn-secondary {
+        background-color: #ffcc00;
+        border: none;
+        color: #404241;
+      }
+
+      .btn-secondary:hover {
+        background-color: #e6b800;
+      }
+
+      .btn-success {
+        background-color: #28a745;
+      }
+
+      .btn-danger {
+        background-color: #ff5c5c;
+      }
+
+      .btn-danger:hover {
+        background-color: #ff2a2a;
+      }
+
+      .container {
+        display: flex;
+        gap: 10px;
+      }
+
+      /* Table Styles */
+      .table th,
+      .table td {
+        padding: 15px;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .table th {
+        background-color: #17c3b2;
+        color: white;
+      }
+
+      .table {
+        background-color: #404241;
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        .main-content {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        h2 {
+          font-size: 1.5em;
+        }
+
+        .form-group input,
+        .form-group select {
+          padding: 8px;
+        }
+
+        .table th,
+        .table td {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="admin-dashboard-container">
+      <!-- Sidebar inside the main content -->
+      <div class="inner-sidebar">
+        <ul class="nav-list">
+          <li>
+            <button class="btn" (click)="navigateTobusopdb()">
+              <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
+
+            <button class="btn" (click)="naviagtetoBoarding()">
+              <i class="fas fa-map-marker-alt"></i> Boarding Points
+            </button>
+            <button class="btn" (click)="navigatetoDroping()">
+              <i class="fas fa-map-pin"></i> Dropping Points
+            </button>
+            <button class="btn" (click)="navigateTomanagebuses()">
+              <i class="fas fa-bus-alt"></i> Manage Buses
+            </button>
+
+            <button class="btn" (click)="navigateToamenities()">
+              <i class="fas fa-concierge-bell"></i> Amenities
+            </button>
+            <button class="btn" (click)="navigatetoOpBooking()">
+              <i class="fas fa-ticket-alt"></i> Bookings
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="main-content">
+        <!-- Select Bus ID Section -->
+        <div class="section-container">
+          <h2>Select Bus ID</h2>
+          <select
+            [(ngModel)]="busId"
+            (change)="onBusIdChange(busId)"
+            class="form-control"
+          >
+            <option *ngFor="let id of availableBusIds" [value]="id">
+              {{ id }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Add Boarding Point Section -->
+        <div class="section-container">
+          <h2>Add Boarding Point</h2>
+          <form (ngSubmit)="addBoardingPoint()">
+            <div class="form-group">
+              <label for="placeName">Place Name</label>
+              <input
+                type="text"
+                id="placeName"
+                [(ngModel)]="newBoardingPoint.placeName"
+                name="placeName"
+                required
+                class="form-control"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="timings">Timings</label>
+              <input
+                type="text"
+                id="timings"
+                [(ngModel)]="newBoardingPoint.timings"
+                name="timings"
+                required
+                class="form-control"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Add Boarding Point
+            </button>
+          </form>
+        </div>
+
+        <!-- Manage Boarding Points Section -->
+        <div class="section-container">
+          <h2>Manage Boarding Points</h2>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Place Name</th>
+                <th>Timings</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bp of boardingPoints">
+                <td>{{ bp.boardingId }}</td>
+                <td
+                  *ngIf="
+                    !editBoardingPoint ||
+                    editBoardingPoint.boardingId !== bp.boardingId
+                  "
+                >
+                  {{ bp.placeName }}
+                </td>
+                <td
+                  *ngIf="
+                    editBoardingPoint &&
+                    editBoardingPoint.boardingId === bp.boardingId
+                  "
+                >
+                  <input
+                    type="text"
+                    [(ngModel)]="editBoardingPoint.placeName"
+                    class="form-control"
+                  />
+                </td>
+                <td
+                  *ngIf="
+                    !editBoardingPoint ||
+                    editBoardingPoint.boardingId !== bp.boardingId
+                  "
+                >
+                  {{ bp.timings }}
+                </td>
+                <td
+                  *ngIf="
+                    editBoardingPoint &&
+                    editBoardingPoint.boardingId === bp.boardingId
+                  "
+                >
+                  <input
+                    type="text"
+                    [(ngModel)]="editBoardingPoint.timings"
+                    class="form-control"
+                  />
+                </td>
+                <td>
+                  <!-- Edit Button -->
+                  <div class="container">
+                    <button
+                      *ngIf="
+                        !editBoardingPoint ||
+                        editBoardingPoint.boardingId !== bp.boardingId
+                      "
+                      class="btn btn-secondary"
+                      (click)="setEditBoardingPoint(bp)"
+                    >
+                      Edit
+                    </button>
+                    <!-- Save Changes Button -->
+                    <button
+                      *ngIf="
+                        editBoardingPoint &&
+                        editBoardingPoint.boardingId === bp.boardingId
+                      "
+                      class="btn btn-success"
+                      (click)="updateBoardingPoint()"
+                    >
+                      Save
+                    </button>
+                    <!-- Delete Button -->
+                    <button
+                      class="btn btn-danger"
+                      (click)="deleteBoardingPoint(bp.boardingId)"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

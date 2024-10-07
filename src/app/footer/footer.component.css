@@ -1,0 +1,42 @@
+footer {
+    background: #333; /* Dark background for consistency */
+    color: white; /* White text for contrast */
+    text-align: center; /* Centered text */
+    padding: 1rem; /* Padding for spacious feel */
+    position: fixed; /* Fixed at the bottom */
+    bottom: 0; /* Align to the bottom */
+    width: 100%; /* Full width */
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+
+}
+
+.footer {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    padding: 20px 30px; /* More padding for spacious feel */
+    margin-top: auto; /* Ensure it stays at the bottom */
+}
+
+.footer p {
+    margin: 0; /* Remove default margin */
+    font-size: 18px; /* Slightly smaller font size */
+    font-family: 'Georgia', serif; /* Elegant font style */
+}
+
+.footer nav {
+    display: flex; /* Use flexbox for navigation */
+    gap: 20px; /* Space between links */
+}
+
+.footer a {
+    color: #17C3B2; /* Link color matching buttons */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for hover */
+    padding: 5px; /* Padding for links */
+}
+
+.footer a:hover {
+    color: #fff; /* Change color on hover for emphasis */
+    transform: scale(1.05); /* Slightly larger on hover */
+}

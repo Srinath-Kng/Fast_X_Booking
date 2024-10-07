@@ -1,0 +1,97 @@
+<div class="select-seat-container">
+  <h2>Select Seats</h2>
+
+  <div class="available-seats">
+    <h3>Available Seats</h3>
+    <div class="seat-grid">
+      <div
+        *ngFor="let seat of seats"
+        class="seat"
+        [class.booked]="seat.isBooked"
+        [class.selected]="isSeatSelected(seat)"
+        (click)="toggleSeatSelection(seat)"
+      >
+        {{ seat.seatNo }}
+      </div>
+    </div>
+  </div>
+
+  <div class="passenger-info">
+    <h3>Passenger Information</h3>
+    <form #bookingForm="ngForm" (ngSubmit)="confirmSeatSelection()">
+      <div>
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          [(ngModel)]="passengerName"
+          name="name"
+          required
+        />
+      </div>
+      <div>
+        <label for="age">Age:</label>
+        <input
+          type="number"
+          id="age"
+          [(ngModel)]="passengerAge"
+          name="age"
+          required
+        />
+      </div>
+      <div>
+        <label for="gender">Gender:</label>
+        <select
+          id="gender"
+          [(ngModel)]="passengerGender"
+          name="gender"
+          required
+        >
+          <option value="" disabled>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <h3>Payment Information</h3>
+      <div>
+        <label for="cardNumber">Card Number:</label>
+        <input
+          type="text"
+          id="cardNumber"
+          [(ngModel)]="cardNumber"
+          name="cardNumber"
+          required
+        />
+      </div>
+      <div>
+        <label for="cardExpiry">Expiry Date:</label>
+        <input
+          type="text"
+          id="cardExpiry"
+          [(ngModel)]="cardExpiry"
+          name="cardExpiry"
+          required
+          placeholder="MM/YY"
+        />
+      </div>
+      <div>
+        <label for="cardCVC">CVC:</label>
+        <input
+          type="text"
+          id="cardCVC"
+          [(ngModel)]="cardCVC"
+          name="cardCVC"
+          required
+        />
+      </div>
+
+      <div class="total-amount">
+        <h4>Total Amount: {{ totalAmount | currency }}</h4>
+      </div>
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</div>

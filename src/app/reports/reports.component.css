@@ -1,0 +1,257 @@
+/* Container styling */
+.reports-dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    background-color: #404241; /* Dark background for the main content */
+    font-family: 'Bebas Neue', Arial, sans-serif;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #404241; /* Sidebar background color */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+    font-size: 24px;
+    color: #fff; /* White text color */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-list li {
+    margin-bottom: 20px;
+}
+.nav-list button{
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #17C3B2; /* Primary color */
+    padding: 10px 20px; /* Padding for buttons */
+    border: 2px solid #404241; /* Border matching primary color */
+    position: relative; /* Positioning for the hover effect */
+    overflow: hidden; /* Contain the hover effect */
+    text-align: center;
+    text-transform: uppercase; /* Uppercase text */
+    transition: color 0.3s; /* Smooth color transition */
+    display: inline-block; /* Ensure proper box model */
+    background-color: transparent; /* Transparent background initially */
+    font-family: 'Georgia', serif;
+    margin-right: -20px;
+
+}
+/* Hover effect using pseudo-element */
+.nav-list button::before {
+    content: '';
+    width: 100%; /* Full width of the button */
+    height: 0; /* Start with no height */
+    position: absolute;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    background: #17C3B2; /* Background color */
+    transition: height 0.5s ease; /* Smooth height transition */
+    z-index: -1; /* Place behind the text */
+}
+
+.nav-list button:hover::before {
+    height: 100%; /* Expand height on hover */
+}
+
+.nav-list button:hover {
+    color: #fff; /* Change text color on hover */
+}
+
+/* Active or Current Link Styling */
+.nav-list button.active {
+    color: #fff; /* Active link color */
+    background-color: #17C3B2; /* Active background color */
+}
+.nav-list button,
+.nav-list li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+
+    color: #17C3B2; /* Primary color */
+    padding: 10px 20px; /* Padding for buttons */
+    border: 2px solid #404241; /* Border matching primary color */
+    position: relative; /* Positioning for the hover effect */
+    overflow: hidden; /* Contain the hover effect */
+    text-align: center;
+    text-transform: uppercase; /* Uppercase text */
+    transition: color 0.3s, background-color 0.5s ease; /* Smooth color transition */
+    display: inline-block;
+    background-color: transparent; /* Transparent background initially */
+    font-family: 'Georgia', serif;
+    width: 220px;
+}
+.nav-list li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #17C3B2; /* Primary color */
+    padding: 10px 20px; /* Padding for buttons */
+    border: 2px solid #404241; /* Border matching primary color */
+    position: relative; /* Positioning for the hover effect */
+    overflow: hidden; /* Contain the hover effect */
+    text-align: center;
+    text-transform: uppercase; /* Uppercase text */
+    transition: color 0.3s; /* Smooth color transition */
+    display: inline-block; /* Ensure proper box model */
+    background-color: transparent; /* Transparent background initially */
+    font-family: 'Georgia', serif;
+    margin-right: -20px;
+}
+
+/* Hover effect using pseudo-element */
+.nav-list li a::before {
+    content: '';
+    width: 100%; /* Full width of the button */
+    height: 0; /* Start with no height */
+    position: absolute;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    background: #17C3B2; /* Background color */
+    transition: height 0.5s ease; /* Smooth height transition */
+    z-index: -1; /* Place behind the text */
+}
+
+.nav-list li a:hover::before {
+    height: 100%; /* Expand height on hover */
+}
+
+.nav-list li a:hover {
+    color: #fff; /* Change text color on hover */
+}
+
+/* Active or Current Link Styling */
+.nav-list li a.active {
+    color: #fff; /* Active link color */
+    background-color: #17C3B2; /* Active background color */
+}
+
+/* Main content styling */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff; /* White background for the content area */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    font-family: 'Georgia', serif;
+}
+
+/* Header styling */
+header h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333; /* Dark color for text */
+    font-weight: bold;
+    text-align: center; /* Centered title */
+}
+
+/* Filter Reports section styling */
+.report-filter {
+    background-color: #f9f9f9; /* Light background for the filter section */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    padding: 20px; /* Padding for spacing */
+    margin-bottom: 30px; /* Space below the section */
+}
+
+/* Heading styles for sections */
+.report-filter h2 {
+    color: #333; /* Dark color for headings */
+    margin-bottom: 15px; /* Space below the heading */
+}
+
+/* Form group for layout consistency */
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+/* Styling for labels */
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space below labels */
+    font-weight: bold; /* Bold text for labels */
+}
+
+/* Input and Select styles */
+input[type="date"] {
+    width: 100%; /* Full width for inputs */
+    padding: 8px; /* Padding for better touch targets */
+    border-radius: 5px; /* Rounded corners for inputs */
+    border: 1px solid #ddd; /* Light border */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+/* Button styling for Generate Report button */
+.btn {
+    padding: 10px 20px; /* Adjusted padding for buttons */
+    background-color: #17C3B2; /* Primary button color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-transform: uppercase; /* Uppercase text for button */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+    width: 100%; /* Full width for button */
+}
+
+/* Hover effect for Generate Report button */
+.btn:hover {
+    background-color: #149A89; /* Darker shade on hover */
+}
+
+/* Generated report section */
+.generated-report {
+    margin-top: 20px; /* Space above the generated report section */
+    background-color: #f9f9f9; /* Light background for report details */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 15px; /* Padding for content */
+}
+
+/* Generated report heading styles */
+.generated-report h3 {
+    color: #333; /* Dark color for headings */
+    margin-bottom: 15px; /* Space below the heading */
+}
+
+/* List of booking details */
+.generated-report ul {
+    list-style: none; /* Remove list styling */
+    padding: 0; /* Remove padding */
+}
+
+.generated-report li {
+    margin-bottom: 10px; /* Space between report items */
+    color: #333; /* Dark text for visibility */
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    .reports-dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .report-filter {
+        max-width: 100%;
+    }
+}

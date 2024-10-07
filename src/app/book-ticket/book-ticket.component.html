@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Tickets</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts for elegant typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for seat icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .booking-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: white;
+        color: #333;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      h2,
+      h3 {
+        color: #17c3b2;
+        text-align: center;
+      }
+
+      p {
+        font-size: 1.1em;
+        color: #333;
+      }
+
+      /* Seat Layout */
+      .seat-layout {
+        display: grid;
+        grid-template-columns: repeat(3, fr);
+        gap: 15px;
+        justify-items: center;
+        margin-top: 20px;
+      }
+
+      .seat {
+        font-size: 2em;
+        cursor: pointer;
+        color: #17c3b2;
+        transition: transform 0.3s;
+        padding: 10px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        border-color: rgb(171, 169, 169);
+      }
+
+      .seat:hover {
+        transform: scale(1.1);
+        background-color: #17c3b2;
+      }
+
+      .seat.booked {
+        background-color: #ff0000;
+        cursor: not-allowed;
+        color: #fff;
+      }
+
+      .seat.selected {
+        background-color: #28d622;
+        color: #fff;
+      }
+
+      /* Passenger and Dropdown Inputs */
+      label {
+        font-weight: bold;
+        color: #17c3b2;
+        margin-top: 10px;
+        display: block;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        background-color: #17c3b2;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2em;
+        width: 100%;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #14a099;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .seat-layout {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="booking-container">
+      <h2>Book Tickets</h2>
+
+      <div *ngIf="bus">
+        <p><strong>Bus Name:</strong> {{ bus.busName }}</p>
+        <p><strong>Price:</strong> ₹{{ bus.fare }}</p>
+        <p><strong>Origin:</strong>{{ bus.origin }}</p>
+        <p><strong>Destination:</strong>{{ bus.destination }}</p>
+      </div>
+
+      <h3>Available Seats</h3>
+      <div class="seat-layout">
+        <div
+          *ngFor="let seat of busSeats"
+          class="seat"
+          [class.booked]="seat.isBooked"
+          [class.selected]="seat.seatNo === selectedSeat"
+          (click)="selectSeat(seat.seatNo)"
+        >
+          {{ seat.seatNo }}
+        </div>
+      </div>
+
+      <div *ngIf="selectedSeat">
+        <h3>Selected Seat: {{ selectedSeat }}</h3>
+      </div>
+
+      <h3>Passenger Details</h3>
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="passengerName" required />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" [(ngModel)]="passengerAge" required />
+
+      <label for="gender">Gender:</label>
+      <select id="gender" [(ngModel)]="passengerGender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <h3>Boarding Point</h3>
+      <select [(ngModel)]="selectedBoardingPoint">
+        <option
+          *ngFor="let boarding of boardingPoints"
+          [value]="boarding.boardingId"
+        >
+          {{ boarding.placeName }} - {{ boarding.timings }}
+        </option>
+      </select>
+
+      <h3>Dropping Point</h3>
+      <select [(ngModel)]="selectedDroppingPoint">
+        <option
+          *ngFor="let dropping of droppingPoints"
+          [value]="dropping.droppingId"
+        >
+          {{ dropping.placeName }} - {{ dropping.timings }}
+        </option>
+      </select>
+
+      <button (click)="confirmBooking()">Confirm Booking</button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

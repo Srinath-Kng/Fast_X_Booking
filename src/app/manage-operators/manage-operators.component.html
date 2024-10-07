@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operator Management</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts for elegant typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .admin-dashboard-container {
+        display: flex;
+        width: 100%;
+      }
+
+      /* Inner Sidebar Navigation */
+      .inner-sidebar {
+        width: 270px;
+        background-color: #404241;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        height: 100vh; /* Full height inside main content */
+        margin-right: 30px;
+      }
+
+      .inner-sidebar .nav-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .inner-sidebar .nav-list li {
+        margin-bottom: 15px;
+        margin-left: 20px;
+      }
+
+      .inner-sidebar button {
+        background-color: transparent;
+        color: #17c3b2;
+        border: none;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px 0;
+        text-align: left;
+        width: 100%;
+      }
+
+      .inner-sidebar button i {
+        color: #ffcc00;
+        margin-right: 10px;
+        font-size: 1.4em;
+      }
+
+      .inner-sidebar button:hover {
+        color: #14a099;
+      }
+
+      .main-content {
+        flex-grow: 1;
+        padding: 30px;
+        background-color: #fff;
+        color: #404241;
+        min-height: 100vh;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #17c3b2;
+        margin-bottom: 40px;
+      }
+
+      h2 {
+        font-size: 1.8em;
+        font-weight: 600;
+        color: #17c3b2;
+        margin-bottom: 20px;
+      }
+
+      /* Form styling */
+      form {
+        background-color: #404241;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      form .form-group {
+        margin-bottom: 15px;
+      }
+
+      form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #ffcc00;
+      }
+
+      form input,
+      form select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+      }
+
+      /* Buttons */
+      .btn-add {
+        background-color: #17c3b2;
+        color: white;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1em;
+        margin-top: 10px;
+        white-space: nowrap;
+      }
+
+      .btn-add:hover {
+        background-color: #14a099;
+      }
+
+      .btn-edit,
+      .btn-delete {
+        background-color: #ffcc00;
+        color: #404241;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+      }
+
+      .btn-edit:hover {
+        background-color: #e6b800;
+      }
+
+      .btn-delete {
+        background-color: #ff5c5c;
+        margin-left: 10px;
+      }
+
+      .btn-delete:hover {
+        background-color: #ff2a2a;
+      }
+
+      .alert {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #ffcc00;
+        color: #333;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+
+      /* Table styling */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #404241;
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      table th,
+      table td {
+        padding: 12px 15px;
+        text-align: left;
+      }
+
+      table th {
+        background-color: #17c3b2;
+      }
+
+      table td {
+        border-bottom: 1px solid #ccc;
+      }
+
+      table tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        .main-content {
+          padding: 10px;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        h2 {
+          font-size: 1.5em;
+        }
+
+        form {
+          padding: 15px;
+        }
+
+        .inner-sidebar {
+          margin-bottom: 20px;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="admin-dashboard-container">
+      <!-- Sidebar inside the main content -->
+      <div class="inner-sidebar">
+        <ul class="nav-list">
+          <li>
+            <button class="btn" (click)="navigateTo('/admindb')">
+              <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
+          </li>
+          <li>
+            <button class="btn" (click)="navigateTo('/manageusers')">
+              <i class="fas fa-users"></i> Manage Users
+            </button>
+          </li>
+          <li>
+            <button class="btn" (click)="navigateTo('/manageoperators')">
+              <i class="fas fa-bus"></i> Bus Operators
+            </button>
+          </li>
+          <li>
+            <button class="btn" (click)="navigatetoBooking()">
+              <i class="fas fa-ticket-alt"></i> Bookings
+            </button>
+          </li>
+          <li>
+            <button class="btn" (click)="navigateTo('/reports')">
+              <i class="fas fa-chart-bar"></i> Reports
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="main-content">
+        <header>
+          <h1>Operator Management</h1>
+        </header>
+
+        <!-- Add New Operator Container -->
+        <div class="add-operator-container">
+          <h2>
+            {{ editingOperator ? "Update Operator" : "Add New Operator" }}
+          </h2>
+          <form (ngSubmit)="editingOperator ? updateOperator() : addOperator()">
+            <div class="form-group">
+              <label for="operatorName">
+                <i class="fas fa-user icon"></i> Name:
+              </label>
+              <input
+                type="text"
+                id="operatorName"
+                name="operatorName"
+                [(ngModel)]="newOperator.name"
+                required
+                placeholder="Enter operator name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">
+                <i class="fas fa-envelope icon"></i> Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                [(ngModel)]="newOperator.email"
+                required
+                placeholder="Enter operator email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="contactNo">
+                <i class="fas fa-phone-alt icon"></i> Contact Number:
+              </label>
+              <input
+                type="text"
+                id="contactNo"
+                name="contactNo"
+                [(ngModel)]="newOperator.contactNo"
+                required
+                placeholder="Enter operator contact number"
+              />
+            </div>
+            <div class="form-group">
+              <label for="gender">
+                <i class="fas fa-venus-mars icon"></i> Gender:
+              </label>
+              <select
+                id="gender"
+                name="gender"
+                [(ngModel)]="newOperator.gender"
+                required
+              >
+                <option value="" disabled>Select gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="password">
+                <i class="fas fa-lock icon"></i> Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                [(ngModel)]="newOperator.password"
+                required
+                placeholder="Enter operator password"
+              />
+            </div>
+            <div class="form-group">
+              <label for="address">
+                <i class="fas fa-home icon"></i> Address:
+              </label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                [(ngModel)]="newOperator.address"
+                required
+                placeholder="Enter address"
+              />
+            </div>
+
+            <button type="submit" class="btn-add">
+              {{ editingOperator ? "Update Operator" : "Add Operator" }}
+            </button>
+          </form>
+          <div *ngIf="displayMessage" class="alert">
+            {{ displayMessage }}
+          </div>
+        </div>
+
+        <!-- Operator List Container -->
+        <div class="operator-list-container">
+          <h2>List of Operators</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Contact Number</th>
+                <th>Gender</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let operator of operators">
+                <td>{{ operator.name }}</td>
+                <td>{{ operator.email }}</td>
+                <td>{{ operator.contactNo }}</td>
+                <td>{{ operator.gender }}</td>
+                <td>
+                  <button class="btn-edit" (click)="editOperator(operator)">
+                    <i class="fas fa-edit"></i> Edit
+                  </button>
+                  <button class="btn-delete" (click)="deleteOperator(operator)">
+                    <i class="fas fa-trash-alt"></i> Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

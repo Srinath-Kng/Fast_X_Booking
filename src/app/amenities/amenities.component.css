@@ -1,0 +1,233 @@
+/* Container styling */
+.admin-dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    background-color: #404241; /* Dark background for the main content */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #404241; /* Sidebar background color */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+    font-size: 24px;
+    color: #fff; /* White text color */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-list li {
+    margin-bottom: 20px;
+}
+
+.nav-list button, .nav-list li a {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #17C3B2; /* Primary color */
+    padding: 10px 20px;
+    border: 2px solid #404241;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    text-transform: uppercase;
+    transition: color 0.3s, background-color 0.5s ease;
+    display: inline-block;
+    background-color: transparent;
+    font-family: 'Georgia', serif;
+}
+
+.nav-list button:hover::before, .nav-list li a:hover::before {
+    height: 100%;
+}
+
+.nav-list button:hover, .nav-list li a:hover {
+    color: #fff;
+}
+
+.nav-list button::before, .nav-list li a::before {
+    content: '';
+    width: 100%;
+    height: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #17C3B2;
+    transition: height 0.5s ease;
+    z-index: -1;
+}
+
+.nav-list button.active, .nav-list li a.active {
+    color: #fff;
+    background-color: #17C3B2;
+}
+
+/* Main content styling */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    font-family: 'Georgia', serif;
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Manage Amenities Section */
+.amenities-management {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+}
+
+/* Button styling */
+.btn {
+    padding: 10px 20px;
+    background-color: #17c3b2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #149a89;
+}
+
+/* Amenities List Section */
+.amenity-list {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Georgia', serif;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+button {
+    background-color: #17c3b2;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #149a89;
+}
+
+button.delete-btn {
+    background-color: #dc3545;
+}
+
+button.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Dashboard Overview Section */
+.dashboard-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.overview-card {
+    background-color: #e7e7fb;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.overview-card:hover {
+    transform: scale(1.05);
+}
+
+.overview-card h2 {
+    font-size: 18px;
+    color: #404241;
+    margin-bottom: 10px;
+}
+
+.overview-card p {
+    font-size: 24px;
+    color: #17C3B2;
+    font-weight: bold;
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .amenities-management {
+        max-width: 100%;
+    }
+
+    .dashboard-overview {
+        grid-template-columns: 1fr;
+    }
+}

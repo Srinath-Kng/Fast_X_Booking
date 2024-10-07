@@ -1,0 +1,195 @@
+/* General Styles */
+h3 {
+    margin-bottom: 10px; /* Space below the company name */
+}
+
+p {
+    margin: 5px 0; /* Space between paragraphs */
+}
+
+/* Filter Container */
+.filter-container {
+    display: flex;
+    margin: 20px;
+}
+
+.filter-sidebar {
+    width: 20%; /* Adjust as needed */
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Options */
+.filter-option {
+    margin-bottom: 10px;
+}
+
+.filter-option label {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.filter-option label:hover {
+    color: #007bff;
+}
+
+/* Filter Buttons */
+.filter-buttons {
+    margin-top: 15px;
+}
+
+.apply-button, .reset-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s;
+}
+
+.apply-button:hover, .reset-button:hover {
+    background-color: #0056b3;
+}
+
+.reset-button {
+    background-color: #6c757d;
+}
+
+.reset-button:hover {
+    background-color: #5a6268;
+}
+
+/* Bus List Container */
+.bus-list-container {
+    flex: 1; /* Allow this to take the remaining space */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Space between bus items */
+}
+
+/* Bus Item Styles */
+.bus-item {
+    flex: 1 1 calc(30% - 15px); /* Three items per row with spacing */
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    justify-content: space-between; /* Align details and price */
+    align-items: center;
+    min-width: 300px; /* Set a minimum width for better alignment */
+}
+
+.bus-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Bus Price and Booking Button */
+.bus-details {
+    flex: 1; /* Take remaining space */
+}
+
+.bus-price {
+    text-align: right;
+}
+
+.book-button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.book-button:hover {
+    background-color: #218838;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column; /* Stack filters and bus list vertically */
+    }
+
+    .filter-sidebar {
+        width: 100%; /* Full width for sidebar on small screens */
+        margin-bottom: 20px; /* Space below sidebar */
+    }
+
+    .bus-list-container {
+        flex-direction: column; /* Stack bus items vertically */
+    }
+
+    .bus-item {
+        flex: 1 1 100%; /* Full width for bus items */
+    }
+}
+/* From Uiverse.io by alexmaracinaru */ 
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #b1dae7;
+    width: 45px;
+    height: 45px;
+    transition: all 0.3s ease;
+  }
+  
+  .cta span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #234567;
+  }
+  
+  .cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #234567;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+  }
+  
+  .cta:hover:before {
+    width: 100%;
+    background: #b1dae7;
+  }
+  
+  .cta:hover svg {
+    transform: translateX(0);
+  }
+  
+  .cta:active {
+    transform: scale(0.95);
+  }
+
+
+

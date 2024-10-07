@@ -1,0 +1,27 @@
+<div class="header">
+  <h1>Bus Ticket Booking</h1>
+  <nav>
+    <button type="button" class="btn" (click)="navigateToHome()">
+      <strong>Home</strong>
+    </button>
+    <button *ngIf="isLoggedIn()" type="button" class="btn" (click)="navigateToSearch()">
+      <strong>Search</strong>
+    </button>
+
+    <!-- Conditional rendering based on authentication status -->
+    <button *ngIf="!isLoggedIn()" type="button" class="btn" (click)="navigateToLogin()">
+      <strong>Login</strong>
+    </button>
+    <button *ngIf="!isLoggedIn()" type="button" class="btn" (click)="navigateToRegister()">
+      <strong>Sign Up</strong>
+    </button>
+
+    <!-- Display "Manage Profile" and "Logout" if logged in -->
+    <button *ngIf="isLoggedIn()" type="button" class="btn" (click)="naviagtetoprofile()">
+      <strong>Manage Profile</strong>
+    </button>
+    <button *ngIf="isLoggedIn()" type="button" class="btn" (click)="logout()">
+      <strong>Logout</strong>
+    </button>
+  </nav>
+</div>

@@ -1,0 +1,230 @@
+/* Container styling */
+.admin-dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Bebas Neue', Arial;
+    background-color: #404241; /* Dark background for the main content */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: #404241; /* Sidebar background color */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-title {
+    font-size: 24px;
+    color: #fff; /* White text color */
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-list li {
+    margin-bottom: 20px;
+}
+
+.nav-list button {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #17C3B2; /* Primary color */
+    padding: 10px 20px; /* Padding for buttons */
+    border: 2px solid #404241; /* Border matching primary color */
+    position: relative; /* Positioning for the hover effect */
+    overflow: hidden; /* Contain the hover effect */
+    text-align: center;
+    text-transform: uppercase; /* Uppercase text */
+    transition: color 0.3s; /* Smooth color transition */
+    display: inline-block; /* Ensure proper box model */
+    background-color: transparent; /* Transparent background initially */
+    font-family: 'Georgia', serif;
+    margin-right: -20px;
+}
+
+/* Hover effect using pseudo-element */
+.nav-list button::before {
+    content: '';
+    width: 100%; /* Full width of the button */
+    height: 0; /* Start with no height */
+    position: absolute;
+    bottom: 0; /* Position at the bottom */
+    left: 0;
+    background: #17C3B2; /* Background color */
+    transition: height 0.5s ease; /* Smooth height transition */
+    z-index: -1; /* Place behind the text */
+}
+
+.nav-list button:hover::before {
+    height: 100%; /* Expand height on hover */
+}
+
+.nav-list button:hover {
+    color: #fff; /* Change text color on hover */
+}
+
+/* Active or Current Link Styling */
+.nav-list button.active {
+    color: #fff; /* Active link color */
+    background-color: #17C3B2; /* Active background color */
+}
+
+/* Main content styling */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff; /* White background for the content area */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    font-family: 'Georgia', serif;
+}
+
+header h1 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333; /* Dark color for text */
+    font-weight: bold;
+}
+
+/* Dashboard overview section */
+.dashboard-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 20px;
+}
+
+.overview-card {
+    background-color: #e7e7fb; /* Light card background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.overview-card:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+.overview-card h2 {
+    font-size: 18px;
+    color: #404241; /* Dark text color */
+    margin-bottom: 10px;
+}
+
+.overview-card p {
+    font-size: 24px;
+    color: #17C3B2; /* Use primary color for numbers */
+    font-weight: bold;
+}
+
+/* Chart container styling */
+.chart-container {
+    margin-top: 20px; /* Space above the chart container */
+}
+
+.charts {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between the charts */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+}
+
+.chart {
+    flex: 1; /* Allow each chart to grow */
+    min-width: 300px; /* Minimum width for each chart */
+    margin: 10px; /* Space around each chart */
+    text-align: center; /* Center align the titles */
+}
+
+canvas {
+    width: 100% !important; /* Make canvas fill the container */
+    height: 500px !important; /* Set height for better visibility */
+    border: 1px solid #ddd; /* Optional border for clarity */
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Removes default spacing between cells */
+    margin: 20px 0; /* Adds spacing between table and other elements */
+    font-size: 16px; /* Adjusts the font size */
+    font-family: 'Georgia', serif; /* Matches the table font to your design */
+}
+
+th, td {
+    padding: 12px 15px; /* Adds padding to table cells */
+    text-align: left; /* Aligns text to the left */
+    border-bottom: 1px solid #ddd; /* Adds border between rows */
+}
+
+th {
+    background-color: #17C3B2; /* Background color for table headers */
+    color: #fff; /* White text for headers */
+    font-weight: bold; /* Makes the header text bold */
+    text-transform: uppercase; /* Converts header text to uppercase */
+}
+
+td {
+    background-color: #f9f9f9; /* Light background color for table rows */
+}
+
+tr:nth-child(even) td {
+    background-color: #f1f1f1; /* Alternating row colors */
+}
+
+tr:hover td {
+    background-color: #e7e7fb; /* Change background on hover */
+    color: #333; /* Darker text color on hover */
+    transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+table thead tr {
+    border-bottom: 2px solid #17C3B2; /* Thicker border for header */
+}
+
+table tbody tr td {
+    border-bottom: 1px solid #ddd; /* Regular border for table rows */
+}
+
+/* Search box styling */
+.search-box {
+    margin-top: 20px; /* Space above the search box */
+    padding: 10px; /* Padding around the search box */
+    border: 1px solid #ddd; /* Border for the search box */
+    border-radius: 5px; /* Rounded corners */
+    width: 100%; /* Full width */
+    max-width: 400px; /* Max width for better visibility */
+    background-color: #f9f9f9; /* Background color */
+    margin: 0 auto; /* Center the search box */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align items vertically */
+    gap: 10px; /* Space between input and button */
+}
+
+.search-box input {
+    padding: 8px; /* Padding inside the input */
+    border-radius: 4px; /* Rounded corners for the input */
+    border: 1px solid #ccc; /* Border for the input */
+    flex-grow: 1; /* Allow the input to take available space */
+}
+
+.search-box button {
+    padding: 8px 12px; /* Padding for the button */
+    background-color: #17C3B2; /* Background color for button */
+    color: #fff; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+}
+
+.search-box button:hover {
+    background-color: #14a899; /* Darker shade on hover */
+}
+

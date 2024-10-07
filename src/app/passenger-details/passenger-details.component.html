@@ -1,0 +1,125 @@
+<div class="passenger-details-container">
+  <h2 class="section-title">Passenger Details</h2>
+
+  <!-- Passenger Information -->
+  <div class="section passenger-info">
+    <div class="section-header">
+      <i class="icon passenger-icon"></i>
+      <span class="section-title">Passenger Information</span>
+    </div>
+    <div class="passenger-form">
+      <div class="form-row">
+        <label for="passenger-name" class="form-label">Name</label>
+        <input
+          type="text"
+          id="passenger-name"
+          class="form-input"
+          [(ngModel)]="passengerName"
+          placeholder="Name"
+        />
+      </div>
+      <div class="form-row">
+        <label for="passenger-age" class="form-label">Age</label>
+        <input
+          type="text"
+          id="passenger-age"
+          class="form-input"
+          [(ngModel)]="passengerAge"
+          placeholder="Age"
+        />
+      </div>
+      <div class="form-row">
+        <label class="form-label">Gender</label>
+        <div class="radio-group">
+          <label class="radio-label">
+            <input
+              type="radio"
+              name="gender"
+              [(ngModel)]="gender"
+              value="male"
+            />
+            Male
+          </label>
+          <label class="radio-label">
+            <input
+              type="radio"
+              name="gender"
+              [(ngModel)]="gender"
+              value="female"
+            />
+            Female
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="state-of-residence" class="form-label">Address *</label>
+        <input
+          type="text"
+          id="state-of-residence"
+          class="form-input"
+          [(ngModel)]="address"
+          placeholder="State of Residence"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Details -->
+  <div class="section contact-info">
+    <div class="section-header">
+      <i class="icon contact-icon"></i>
+      <span class="section-title">Contact Details</span>
+    </div>
+    <p class="info-text">Your ticket will be sent to these details</p>
+    <div class="contact-form">
+      <div class="form-row">
+        <label for="email-id" class="form-label">Email ID</label>
+        <input
+          type="email"
+          id="email-id"
+          class="form-input"
+          [(ngModel)]="email"
+          placeholder="Email ID"
+        />
+      </div>
+      <div class="form-row">
+        <label for="phone-number" class="form-label">Phone</label>
+        <div class="phone-input">
+          <input
+            type="text"
+            id="country-code"
+            class="form-input"
+            value="+91"
+            readonly
+          />
+          <input
+            type="text"
+            id="phone-number"
+            class="form-input"
+            [(ngModel)]="phoneNumber"
+            placeholder="Phone"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer and Payment -->
+  <div class="footer">
+    <p class="total-amount">
+      Total Amount: <strong>INR 500.00</strong><br />
+      (*Exclusive of Taxes)
+    </p>
+    <button
+      type="button"
+      class="proceed-button"
+      (click)="navigateToTicketsConfirmed()"
+    >
+      Confirm Booking
+    </button>
+    <p class="tnc">
+      By clicking on proceed, I agree that I have read and understood the
+      <a href="#">TnCs</a> and the <a href="#">Privacy Policy</a>.
+    </p>
+  </div>
+</div>

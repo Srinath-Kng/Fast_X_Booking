@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Management</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts for elegant typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      .admin-dashboard-container {
+        display: flex;
+        width: 100%;
+      }
+
+      .inner-sidebar {
+        width: 300px;
+        background-color: #404241;
+        color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        height: 100vh; /* Full height inside main content */
+      }
+
+      .inner-sidebar .nav-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .inner-sidebar .nav-list li {
+        margin-bottom: 20px;
+      }
+
+      .inner-sidebar button {
+        background-color: transparent;
+        color: #17c3b2;
+        border: none;
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .inner-sidebar button i {
+        color: #ffcc00;
+        margin-right: 10px;
+        font-size: 1.4em;
+      }
+
+      .inner-sidebar button:hover {
+        color: #14a099;
+      }
+
+      .main-content {
+        /* Adjust for the sidebar width */
+        flex-grow: 1;
+        padding: 30px;
+        background-color: #fff;
+        color: #404241;
+        min-height: 100vh;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #17c3b2;
+        margin-bottom: 40px;
+      }
+
+      h2 {
+        font-size: 1.8em;
+        font-weight: 600;
+        color: #17c3b2;
+        margin-bottom: 20px;
+      }
+
+      /* Form styling */
+      form {
+        background-color: #404241;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      form .form-group {
+        margin-bottom: 15px;
+      }
+
+      form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #ffcc00;
+      }
+
+      form input,
+      form select {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+      }
+
+      /* Buttons */
+      .fetch-user-btn,
+      .add-user-btn,
+      .update-user-btn,
+      .cancel-btn,
+      .btn-delete {
+        background-color: #17c3b2;
+        color: white;
+        padding: 8px 12px; /* Reduced padding */
+        border: none;
+        border-radius: 10px;
+        font-size: 0.9em; /* Reduced font size */
+        margin-top: 10px;
+        white-space: nowrap; /* Prevent text wrapping */
+      }
+
+      .fetch-user-btn {
+        display: block;
+        width: 100%; /* Make it a full-width button */
+        text-align: center;
+      }
+
+      .fetch-user-btn:hover,
+      .add-user-btn:hover,
+      .update-user-btn:hover,
+      .cancel-btn:hover,
+      .btn-delete:hover {
+        background-color: #14a099;
+      }
+
+      .btn-delete {
+        background-color: #ff5c5c;
+        margin-top: 0;
+        display: inline-block;
+      }
+
+      .btn-delete:hover {
+        background-color: #ff2a2a;
+      }
+
+      /* User List Styling */
+      .user-list-container table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #404241;
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .user-list-container th,
+      .user-list-container td {
+        padding: 12px 15px; /* Adjust padding */
+        text-align: left;
+      }
+
+      .user-list-container th {
+        background-color: #17c3b2;
+      }
+
+      .user-list-container td {
+        border-bottom: 1px solid #ccc;
+      }
+
+      .user-list-container tr:last-child td {
+        border-bottom: none;
+      }
+
+      .fetched-user-data {
+        background-color: #404241;
+        padding: 20px;
+        border-radius: 10px;
+        color: white;
+        margin-top: 20px;
+      }
+
+      .fetched-user-data p {
+        font-size: 1.1em;
+        margin: 10px 0;
+      }
+
+      /* Icon Styling */
+      .icon {
+        color: #ffcc00;
+        margin-right: 10px;
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 768px) {
+        .main-content {
+          padding: 10px;
+          margin-left: 0;
+        }
+
+        h1 {
+          font-size: 2em;
+        }
+
+        h2 {
+          font-size: 1.5em;
+        }
+
+        form {
+          padding: 15px;
+        }
+
+        .fetch-user-btn {
+          width: 100%;
+        }
+
+        .inner-sidebar {
+          width: 100%;
+          height: auto;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="admin-dashboard-container">
+      <!-- Inner Sidebar Navigation -->
+      <div class="inner-sidebar">
+        <ul class="nav-list">
+          <li>
+            <button (click)="navigateToadmindb()">
+              <i class="fas fa-tachometer-alt icon"></i>Dashboard
+            </button>
+          </li>
+          <li>
+            <button (click)="navigateTomanageusers()">
+              <i class="fas fa-users icon"></i>Manage Users
+            </button>
+          </li>
+          <li>
+            <button (click)="navigatetoBusOperators()">
+              <i class="fas fa-bus icon"></i>Bus Operators
+            </button>
+          </li>
+          <li>
+            <button (click)="navigateToBooking()">
+              <i class="fas fa-ticket-alt icon"></i>Bookings
+            </button>
+          </li>
+          <li>
+            <button (click)="navigateToreports()">
+              <i class="fas fa-chart-bar icon"></i>Reports
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content Area -->
+      <div class="main-content">
+        <header>
+          <h1>User Management</h1>
+        </header>
+
+        <!-- Select User Container -->
+        <div class="user-selection">
+          <h2>Select User</h2>
+          <form>
+            <div class="form-group">
+              <label for="userId">
+                <i class="fas fa-user icon"></i>Enter User ID:
+              </label>
+              <input
+                type="number"
+                id="userId"
+                [(ngModel)]="userId"
+                placeholder="Enter user ID"
+                name="userId"
+              />
+              <button
+                type="button"
+                class="fetch-user-btn"
+                (click)="getUserById()"
+              >
+                FETCH USER
+              </button>
+            </div>
+            <div *ngIf="fetchedUser" class="fetched-user-data">
+              <h3>Fetched User Details</h3>
+              <p>
+                <i class="fas fa-id-badge icon"></i>User ID:
+                {{ fetchedUser.userId }}
+              </p>
+              <p>
+                <i class="fas fa-user icon"></i>Name: {{ fetchedUser.name }}
+              </p>
+              <p>
+                <i class="fas fa-venus-mars icon"></i>Gender:
+                {{ fetchedUser.gender }}
+              </p>
+              <p>
+                <i class="fas fa-envelope icon"></i>Email:
+                {{ fetchedUser.email }}
+              </p>
+              <p>
+                <i class="fas fa-phone icon"></i>Contact No:
+                {{ fetchedUser.contactNo }}
+              </p>
+              <p>
+                <i class="fas fa-home icon"></i>Address:
+                {{ fetchedUser.address }}
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <!-- User List Container -->
+        <div class="user-list-container">
+          <h2>List of Users</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.gender }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.contactNo }}</td>
+                <td>{{ user.address }}</td>
+                <td>
+                  <button class="btn-delete" (click)="deleteUser(user.userId)">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Add New User Container -->
+        <div class="add-user-container">
+          <h2 *ngIf="addMode">Add New User</h2>
+          <h2 *ngIf="editMode">Edit User</h2>
+          <form>
+            <div class="form-group">
+              <label for="name"> <i class="fas fa-user icon"></i>Name: </label>
+              <input
+                *ngIf="addMode"
+                type="text"
+                id="name"
+                [(ngModel)]="newUser.name"
+                name="name"
+              />
+              <input
+                *ngIf="editMode"
+                type="text"
+                id="name"
+                [(ngModel)]="editUserDetails.name"
+                name="name"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">
+                <i class="fas fa-envelope icon"></i>Email:
+              </label>
+              <input
+                *ngIf="addMode"
+                type="email"
+                id="email"
+                [(ngModel)]="newUser.email"
+                name="email"
+              />
+              <input
+                *ngIf="editMode"
+                type="email"
+                id="email"
+                [(ngModel)]="editUserDetails.email"
+                name="email"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">
+                <i class="fas fa-lock icon"></i>Password:
+              </label>
+              <input
+                *ngIf="addMode"
+                type="password"
+                id="password"
+                [(ngModel)]="newUser.password"
+                name="password"
+              />
+              <input
+                *ngIf="editMode"
+                type="password"
+                id="password"
+                [(ngModel)]="editUserDetails.password"
+                name="password"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contactNo">
+                <i class="fas fa-phone icon"></i>Contact No:
+              </label>
+              <input
+                *ngIf="addMode"
+                type="text"
+                id="contactNo"
+                [(ngModel)]="newUser.contactNo"
+                name="contactNo"
+              />
+              <input
+                *ngIf="editMode"
+                type="text"
+                id="contactNo"
+                [(ngModel)]="editUserDetails.contactNo"
+                name="contactNo"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="address">
+                <i class="fas fa-home icon"></i>Address:
+              </label>
+              <input
+                *ngIf="addMode"
+                type="text"
+                id="address"
+                [(ngModel)]="newUser.address"
+                name="address"
+              />
+              <input
+                *ngIf="editMode"
+                type="text"
+                id="address"
+                [(ngModel)]="editUserDetails.address"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="gender">
+                <i class="fas fa-venus-mars icon"></i>Gender:
+              </label>
+              <input
+                *ngIf="addMode"
+                type="text"
+                id="gender"
+                [(ngModel)]="newUser.gender"
+                name="gender"
+              />
+              <input
+                *ngIf="editMode"
+                type="text"
+                id="gender"
+                [(ngModel)]="editUserDetails.gender"
+                name="gender"
+              />
+            </div>
+
+            <button
+              *ngIf="addMode"
+              type="button"
+              class="add-user-btn"
+              (click)="addUser()"
+            >
+              Add User
+            </button>
+            <button
+              *ngIf="editMode"
+              type="button"
+              class="update-user-btn"
+              (click)="updateUser(editUserDetails.userId)"
+            >
+              Update User
+            </button>
+            <button
+              *ngIf="editMode"
+              type="button"
+              class="cancel-btn"
+              (click)="cancelEdit()"
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

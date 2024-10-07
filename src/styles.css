@@ -1,0 +1,37 @@
+/* Ensure the body and html take full height */
+html, body {
+    height: 100%;
+    margin: 0; /* Remove default margin */
+}
+
+/* Main container to hold content */
+.main-container {
+    display: flex;
+    flex-direction: column; /* Arrange children vertically */
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Your footer styles */
+.footer {
+    background-color: #444; /* Consistent dark background */
+    color: white; /* White text for contrast */
+    text-align: center; /* Center footer content */
+    padding: 15px 20px; /* Padding for spacious feel */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    width: 100%; /* Full width */
+    margin-top: auto; /* Push footer to the bottom */
+}
+
+.footer p {
+    margin: 0; /* Remove default margin */
+    font-size: 14px; /* Smaller font size for elegance */
+    font-family: 'Arial', sans-serif; /* Clean font style */
+    align-content: baseline;
+}
+
+
+ 
+  
+  
+  
+  

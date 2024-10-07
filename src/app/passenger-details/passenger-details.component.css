@@ -1,0 +1,175 @@
+/* Main container styling */
+.passenger-details-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Section title */
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Section header styling */
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header .icon {
+    width: 16px;
+    height: 16px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Form row styling */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    flex: 0 0 30%; /* Label takes up 30% of the row */
+    font-weight: bold;
+    color: #333;
+    margin-left: 20px;
+}
+
+.form-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: -10%;
+}
+
+.form-input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Radio group styling */
+.radio-group {
+    display: flex;
+    align-items: center;
+}
+
+.radio-label {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+/* Phone input styling */
+/* Phone input styling */
+.phone-input {
+    display: flex;
+    gap: 70px;
+}
+.country-code {
+    width: 60px;
+  }
+  
+#country-code {
+    flex: 0 0 70px; /* Set a fixed width for the country code */
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center; /* Center the text inside the country code box */
+}
+
+#phone-number {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+#phone-number:focus,
+#country-code:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+
+.phone-input input {
+    flex: 1;
+}
+
+/* Contact info section */
+.info-text {
+    background-color: #fff7d1;
+    color: #555;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.total-amount {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.proceed-button {
+    background-color: #17C3B2;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.proceed-button:hover {
+    background-color: #18736a;
+}
+
+.tnc {
+    font-size: 12px;
+    color: #666;
+    margin-top: 15px;
+}
+
+.tnc a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.tnc a:hover {
+    text-decoration: underline;
+}

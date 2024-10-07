@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Profile</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts for elegant typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Profile Form Container */
+      .profile-container {
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 30px;
+        background-color: #404241;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        color: white;
+      }
+
+      .profile-container h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #17c3b2;
+        font-size: 2.5em;
+      }
+
+      label {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        font-size: 1.1em;
+        color: #666;
+        margin-bottom: 15px;
+      }
+
+      .form-control:focus {
+        outline: none;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+      .btn-primary ::before {
+        background-color: #17c3b2;
+      }
+      .btn-primary {
+        background-color: #17c3b2;
+        color: white;
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 1.2em;
+        border: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #14a099;
+      }
+
+      .alert {
+        margin-top: 20px;
+      }
+
+      .text-danger {
+        font-size: 0.9em;
+        color: red;
+      }
+
+      /* Bookings Section */
+      .booking-list {
+        margin-top: 30px;
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .booking-item {
+        background-color: #333;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .booking-item strong {
+        color: #17c3b2;
+      }
+
+      /* Footer Section */
+      .footer-section {
+        background-color: #333;
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .footer-section p {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      .footer-section a {
+        color: white;
+        text-decoration: none;
+      }
+
+      @media (max-width: 768px) {
+        .profile-container {
+          margin: 50px auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Manage Profile Form -->
+    <div class="profile-container">
+      <h2>Manage Profile</h2>
+      <form [formGroup]="userForm" (ngSubmit)="updateuser()">
+        <div class="form-group">
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Name"
+          />
+          <div
+            *ngIf="
+              userForm.get('name')?.invalid && userForm.get('name')?.touched
+            "
+            class="text-danger"
+          >
+            Name is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            id="email"
+            type="email"
+            class="form-control"
+            formControlName="email"
+            placeholder="Email"
+          />
+          <div
+            *ngIf="
+              userForm.get('email')?.invalid && userForm.get('email')?.touched
+            "
+            class="text-danger"
+          >
+            Valid email is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <div
+            *ngIf="
+              userForm.get('password')?.invalid &&
+              userForm.get('password')?.touched
+            "
+            class="text-danger"
+          >
+            Password must be at least 8 characters.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            id="contactNo"
+            type="text"
+            class="form-control"
+            formControlName="contactNo"
+            placeholder="Contact Number"
+          />
+        </div>
+
+        <div class="form-group">
+          <select id="gender" class="form-control" formControlName="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <input
+            id="address"
+            type="text"
+            class="form-control"
+            formControlName="address"
+            placeholder="Address"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="userForm.invalid"
+        >
+          Update Profile
+        </button>
+
+        <div *ngIf="successMessage" class="alert alert-success mt-2">
+          {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+          {{ errorMessage }}
+        </div>
+      </form>
+
+      <h3>Your Bookings</h3>
+      <div *ngIf="bookings.length > 0; else noBookings">
+        <ul class="booking-list">
+          <li *ngFor="let booking of bookings" class="booking-item">
+            <strong>Passenger Name:</strong> {{ booking.passengerName }} <br />
+            <strong>Age:</strong> {{ booking.age }} <br />
+            <strong>Seat Number:</strong> {{ booking.seatNumber }} <br />
+            <strong>Bus Name:</strong>
+            {{ busDetails[booking.busId].busName || "N/A" }} <br />
+            <strong>Departure Date:</strong>
+            {{
+              busDetails[booking.busId].departureDate | date : "short" || "N/A"
+            }}
+          </li>
+        </ul>
+      </div>
+
+      <ng-template #noBookings>
+        <p>No bookings found.</p>
+      </ng-template>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer-section">
+      <p>&copy; 2024 Bus Ticket Booking. All Rights Reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

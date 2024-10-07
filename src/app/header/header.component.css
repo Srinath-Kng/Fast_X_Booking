@@ -1,0 +1,112 @@
+.header {
+    background-color: #444; /* Darker background for elegance */
+    color: #fff; /* White text */
+    padding: 15px 20px; /* Padding for spacious feel */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between title and nav */
+    align-items: center; /* Center items vertically */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Deeper shadow for depth */
+}
+  
+  .header h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 28px; /* Larger font size for emphasis */
+    font-family: 'Georgia', serif; /* Elegant font style */
+  }
+  
+  nav {
+    display: flex; /* Use flexbox for navigation */
+    gap: 15px; /* Space between buttons */
+}
+  
+  button {
+    background-color: #555; /* Slightly lighter than header */
+    color: #fff; /* White text for buttons */
+    border: none; /* Remove border */
+    border-radius: 25px; /* Pill-shaped buttons */
+    padding: 10px 20px; /* Button padding */
+    font-family: 'Arial', sans-serif; /* Simple font for buttons */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  }
+  
+  button:hover {
+    background-color: #777; /* Lighter on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+  }
+  
+button {
+    padding: 0.8em 1.8em;
+    border: 2px solid #17C3B2;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #17C3B2;
+   }
+   
+   button::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #17C3B2;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   button:hover::before {
+    width: 105%;
+   }
+   
+   button:hover {
+    color: #111;
+   }
+   .header h1 {
+    margin: 0;
+    font-size: 36px; /* Increased font size */
+    font-family: 'Georgia', serif; /* Elegant font style */
+    color: #ffcc00; /* A gold color for sophistication */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+    letter-spacing: 1px; /* Slightly wider letters for elegance */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .header h1:hover {
+    transform: scale(1.05); /* Slightly larger on hover */
+  }
+  .header {
+    background-color: #333; /* Dark background for elegance */
+    color: #fff; /* White text */
+    padding: 15px 30px; /* More padding for a spacious feel */
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Space between title and nav */
+    align-items: center; /* Center items vertically */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  }
+  
+  .header h1 {
+    margin: 0; /* Remove default margin */
+    font-size: 28px; /* Larger font size for emphasis */
+    font-family: 'Georgia', serif; /* Elegant font style */
+    color: #17C3B2; /* Changed to match button color */
+    transition: color 0.3s; /* Smooth color transition on hover */
+  }
+  
+  .header h1:hover {
+    color: #fff; /* Change color on hover for emphasis */
+  }
+  
+  nav {
+    display: flex; /* Use flexbox for navigation */
+    gap: 20px; /* Increased space between buttons */
+  }

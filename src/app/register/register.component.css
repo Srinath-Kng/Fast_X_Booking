@@ -1,0 +1,97 @@
+/* Center the form and add spacing */
+form {
+    max-width: 400px; /* Maximum width of the form */
+    margin: 0 auto; /* Center the form horizontally */
+    padding: 20px; /* Space inside the form */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    display: flex; /* Flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+  }
+  
+  /* Style for labels */
+  label {
+    display: block; /* Block level for labels */
+    margin-bottom: 8px; /* Space below each label */
+    font-weight: bold; /* Bold font */
+    text-align: left; /* Align text to the left */
+    width: 100%; /* Full width */
+  }
+  
+  /* Style for input and select elements */
+  input,
+  select {
+    width: 100%; /* Full width of the parent */
+    padding: 10px; /* Space inside input */
+    margin-bottom: 15px; /* Space below input */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Slightly rounded corners */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: all 0.3s ease-in-out; /* Smooth transition for focus effects */
+  }
+  
+  /* Focus state for input and select elements */
+  input:focus,
+  select:focus {
+    outline: none; /* Remove default outline */
+    border-color: #4caf50; /* Green border on focus */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3); /* Green glow on focus */
+  }
+  
+  /* Invalid state for form inputs */
+  .invalid {
+    border-color: red; /* Red border for invalid inputs */
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.3); /* Red glow for invalid inputs */
+  }
+  
+  /* Style for the submit button */
+  button {
+    display: block; /* Block level for button */
+    width: 100%; /* Full width of the parent */
+    padding: 10px; /* Space inside button */
+    margin-top: 10px; /* Space above the button */
+    background-color: #4caf50; /* Green background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  /* Hover state for the button */
+  button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Disabled state for the button */
+  button[disabled] {
+    opacity: 0.7; /* Slightly transparent */
+    cursor: not-allowed; /* Not-allowed cursor */
+  }
+  .success-message {
+    margin-top: 20px;
+    color: green; /* Color for success message */
+    font-weight: bold; /* Bold text for emphasis */
+    text-align: center; /* Centered text */
+  }
+  
+  .log_buttons {
+    display: inline-block; /* Inline-block for proper spacing */
+    padding: 10px 20px; /* Padding for the button */
+    margin-top: 20px; /* Space above the button */
+    background-color: #2196f3; /* Blue background */
+    color: white; /* White text */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Slightly rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    text-decoration: none; /* Remove underline from links */
+    text-align: center; /* Center text */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+
+  .log_buttons:hover {
+    background-color: #1976d2; /* Darker blue on hover */
+  }

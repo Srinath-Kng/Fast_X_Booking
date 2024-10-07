@@ -1,0 +1,137 @@
+/* Container for the seat selection and form */
+.select-seat-container {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h2, h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Seat grid container */
+.seat-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Individual seat styles */
+.seat {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Booked seat (already reserved) */
+.seat.booked {
+  background-color: #ff4d4d;
+  color: white;
+  cursor: not-allowed;
+}
+
+/* Selected seat */
+.seat.selected {
+  background-color: #4caf50;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Seat hover effect */
+.seat:not(.booked):hover {
+  background-color: #ddd;
+}
+
+/* Passenger information form styles */
+.passenger-info {
+  margin-top: 30px;
+}
+
+.passenger-info div {
+  margin-bottom: 15px;
+}
+
+.passenger-info label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input and select field styling */
+.passenger-info input,
+.passenger-info select {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+/* Focus state for input fields */
+.passenger-info input:focus,
+.passenger-info select:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Payment form heading */
+.passenger-info h3 {
+  margin-top: 20px;
+}
+
+/* Total amount section */
+.total-amount {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Submit button hover and focus effects */
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+button[type="submit"]:focus {
+  outline: none;
+  transform: scale(1.05);
+}
+
+/* Error message styles (if needed for future validation) */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-align: center;
+}
